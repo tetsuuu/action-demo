@@ -1,0 +1,12 @@
+name: FOOBAR
+on:
+  schedule:
+    - cron: '0 0 * * 3'
+jobs:
+  create_sprint:
+    name: hello
+    runs-on: ubuntu-latest
+    steps:
+    - name: cron hello
+      run: |
+        echo 'Hello, My Cron Job!'
