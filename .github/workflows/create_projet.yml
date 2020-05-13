@@ -1,7 +1,7 @@
 name: schedule
 on:
   schedule:
-    - cron: '40 9 * * *'
+    - cron: '40 0 * * *'
 jobs:
   create_sprint:
     name: hello
