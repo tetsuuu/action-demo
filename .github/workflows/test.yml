@@ -1,13 +1,13 @@
-name: FOOBAR
-on:
-  schedule:
-    - cron: '*/5 * * * *'
+# name: FOOBAR
+# on:
+#   schedule:
+#     - cron: '*/5 * * * *'
 
-jobs:
-  create_sprint:
-    name: hello
-    runs-on: ubuntu-latest
-    steps:
-    - name: cron hello
-      run: |
-        echo 'Hello, My Cron Job!'
+# jobs:
+#   create_sprint:
+#     name: hello
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: cron hello
+#       run: |
+#         echo 'Hello, My Cron Job!'
