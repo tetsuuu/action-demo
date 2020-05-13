@@ -1,7 +1,7 @@
 name: FOOBAR
 on:
   schedule:
-    - cron: '0 0 * * 3'
+    - cron: '*/5 * * * *'
 jobs:
   create_sprint:
     name: hello
