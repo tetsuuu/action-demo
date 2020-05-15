@@ -1,12 +1,44 @@
-# on:
-#   issues:
-#     types: labeled
+# Using community actions
+# https://github.com/alex-page/github-project-automation-plus
+# https://github.com/ben-z/actions-comment-on-issue
 
-# jobs:
-#   move_label:
-#     name: hello
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: cron hello
-#       run: |
-#         echo 'Hello, My Cron Job!'
+name: 'Project assign automation'
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  project_assing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Move design labeled issues into design
+        if: github.event.action == 'labeled' && github.event.label.name == 'design'
+        uses: alex-page/github-project-automation-plus@master
+        with:
+          project: design
+          column: ToDo
+          repo-token: ${{ secrets.API_TOKEN }}
+
+      - name: Move proccessing labeled issues into proccessing
+        if: github.event.action == 'labeled' && github.event.label.name == 'proccessing'
+        uses: alex-page/github-project-automation-plus@master
+        with:
+          project: processing
+          column: 発生
+          repo-token: ${{ secrets.API_TOKEN }}
+
+      - name: Move review labeled issues into Feedback
+        if: github.event.action == 'labeled' && github.event.label.name == 'review'
+        uses: alex-page/github-project-automation-plus@master
+        with:
+          project: Feedback
+          column: Inbox
+          repo-token: ${{ secrets.API_TOKEN }}
+
+      - name: Add to comment for more detail
+        if: github.event.action == 'labeled' && github.event.label.name == 'question'
+        uses: ben-z/actions-comment-on-issue@1.0.2
+        with:
+          message: "詳細に教えてください＞＜"
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
