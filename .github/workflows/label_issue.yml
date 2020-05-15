@@ -6,7 +6,7 @@ name: 'Project assign automation'
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   project_assing:
