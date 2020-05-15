@@ -40,5 +40,5 @@ jobs:
         if: github.event.action == 'labeled' && github.event.label.name == 'question'
         uses: ben-z/actions-comment-on-issue@1.0.2
         with:
-          message: "詳細に教えてください＞＜"
+          message: "@${{github.actor}}\n詳細に教えてください＞＜"
           GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
