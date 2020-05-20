@@ -1,12 +1,55 @@
 name: schedule
 on:
   schedule:
-    - cron: '0 1 * * 3'
+    - cron: '5 * * * *'
+
 jobs:
   create_sprint:
-    name: hello
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
-    - name: cron hello
-      run: |
-        echo 'Hello, My Cron Job!'
+      uses: tetsuuu/clone-github-project@v1
+      with:
+        repo-token: {{ secrets.API_TOKEN }}
+        project-prefix: "Openβ "
+
+    # - name: replace variables
+    #   run: |
+    #   curl -H "Accept: application/vnd.github.inertia-preview+json" -H "Authorization: token ${{ API_TOKEN }}" 'https://api.github.com/repos/payper-src/paild/projects?page=1&per_page=100' | jq '.[] | select(.name | contains("Openβ")) | { "node_id" : .node_id,"name": .name, "body": .body }' | tail -n 5 >> temp.json
+    #   start_day=$(date -v+4d "+%m/%d")
+    #   end_day=$(date -v+9d "+%m/%d")
+    #   body="${start_day} - ${end_day}"
+    #   name=$(cat temp.json | jq -r .name | cut -d " " -f 2 | cut -b1 | awk '{sum += $1+1 } END {print "Openβ",sum"th","batch"}')
+    #   source_id=$(cat temp.json | jq -r .node_id)
+
+    # - name: create project
+    #   run: |
+    #   mutation=`
+    #   {   
+    #     "variables" : {
+    #         "name" : "${name}",
+    #         "body" : "${body}",
+    #         "sourceId" : "${source_id}"
+    #         "ownerId" : "projectOwnerId"
+    #     },
+    #     "query": "mutation($name:String!,$body:String!,$sourceId:String!,$ownerId:String!){
+    #         cloneProject(input:{
+    #             body:$body,
+    #             name:$name,
+    #             sourceId:$sourceId,
+    #             targetOwnerId:$ownerId,
+    #             includeWorkflows:true
+    #         })
+    #         {
+    #             project {
+    #                 state
+    #                 name
+    #                 body
+    #             }
+    #         }
+    #     }"
+    #   }`
+    #   curl -H "Authorization: bearer ${{ API_TOKEN }}" -d $mutation https://api.github.com/graphql
+
+    # - name: relay cards
+    #   run: |
+      
