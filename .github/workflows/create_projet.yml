@@ -7,7 +7,7 @@ jobs:
   create_sprint:
     runs-on: ubuntu-18.04
     steps:
-      - name: Create weekly project
+      - name: Create weekly project test
         uses: tetsuuu/clone-github-project@v1
         with:
           repo-token: ${{ secrets.API_TOKEN }}
