@@ -7,10 +7,11 @@ jobs:
   create_sprint:
     runs-on: ubuntu-18.04
     steps:
-      uses: tetsuuu/clone-github-project@v1
-      with:
-        repo-token: {{ secrets.API_TOKEN }}
-        project-prefix: "Openβ "
+      - name: Create weekly project
+        uses: tetsuuu/clone-github-project@v1
+        with:
+          repo-token: ${{ secrets.API_TOKEN }}
+          project-prefix: "Openβ "
 
     # - name: replace variables
     #   run: |
