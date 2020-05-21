@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Create weekly project test
-        uses: tetsuuu/clone-github-project@v1
+        uses: tetsuuu/clone-github-project@v0.1.2
         with:
           repo-token: ${{ secrets.API_TOKEN }}
           project-prefix: "Openβ "
