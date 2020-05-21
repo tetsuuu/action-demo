@@ -14,7 +14,7 @@ jobs:
         with:
           repo-token: ${{ secrets.API_TOKEN }}
           project-prefix: "Openβ "
-          repo-name: ${{ github.repository }}
+          repo-name: ${{ github.repository.name }}
           owner: ${{ github.repository_owner }}
 
     # - name: replace variables
