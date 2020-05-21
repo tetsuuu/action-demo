@@ -2,8 +2,8 @@ name: schedule
 on:
   push:
     branches: init-action  
-  schedule:
-    - cron: '*/5 * * * *'
+#   schedule:
+#     - cron: '*/5 * * * *'
 
 jobs:
   create_sprint:
