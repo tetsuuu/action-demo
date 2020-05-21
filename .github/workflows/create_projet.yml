@@ -1,5 +1,7 @@
 name: schedule
 on:
+  push:
+    branches: init-action  
   schedule:
     - cron: '*/5 * * * *'
 
